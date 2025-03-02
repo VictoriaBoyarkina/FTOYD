@@ -1,8 +1,7 @@
-function App() {
+import Button from "./components/Button";
 
-  return (
-   <div>Hello</div>
-  )
+function App() {
+  return <Button />;
 }
 
-export default App
+export default App;
