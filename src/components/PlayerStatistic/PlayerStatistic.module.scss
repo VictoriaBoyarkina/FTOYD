@@ -1,0 +1,38 @@
+@import "@colors";
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  color: $white02;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: $black02;
+
+  .player {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .statistic {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .title {
+      color: $white04;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}

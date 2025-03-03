@@ -1,0 +1,39 @@
+@import "@colors";
+
+.button {
+  background-color: $red01;
+  border: 0;
+  color: $white01;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600px;
+  border-radius: 4px;
+
+  &:active {
+    background-color: $red02;
+  }
+
+  &:disabled {
+    background-color: $red03;
+    color: $gray03;
+  }
+
+  .buttonContent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .loading {
+    animation: spin 1.5s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

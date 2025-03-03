@@ -1,8 +1,7 @@
-function App() {
+import Main from "./components/Main";
 
-  return (
-   <div>Hello</div>
-  )
+function App() {
+  return <Main />;
 }
 
-export default App
+export default App;
