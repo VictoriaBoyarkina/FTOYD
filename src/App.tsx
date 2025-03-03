@@ -1,19 +1,7 @@
-import Button from "./components/Button";
-import MatchInfo from "./components/MatchInfo/MatchInfo";
-import Status from "./components/Status/Status";
-import Error from "./components/Error/Error";
+import Main from "./components/Main";
 
 function App() {
-  return (
-    <>
-      <Button />
-      <Status value="finished" />
-      <Status value="live" />
-      <Status value="waiting" />
-      <Error />
-      <MatchInfo />
-    </>
-  );
+  return <Main />;
 }
 
 export default App;

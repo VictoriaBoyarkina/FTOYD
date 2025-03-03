@@ -7,7 +7,9 @@ import PlayerStatistic from "../PlayerStatistic";
 import Result from "../Result";
 import clsx from "clsx";
 
-interface MatchInfoProps {}
+interface MatchInfoProps {
+  match: unknown;
+}
 
 const MatchInfo: FC<MatchInfoProps> = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
