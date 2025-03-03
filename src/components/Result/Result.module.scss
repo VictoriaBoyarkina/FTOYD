@@ -1,8 +1,8 @@
 @import "@colors";
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   padding: 14px 24px;
   border-radius: 4px;
   color: $white02;
@@ -12,6 +12,7 @@
 
   .block {
     display: flex;
+    flex-grow: 1;
     gap: 8px;
     align-items: center;
     justify-content: center;
@@ -22,4 +23,10 @@
       font-size: 14px;
     }
   }
+}
+
+.divider {
+  margin: 0 8px;
+  color: $black06;
+  font-size: 24px;
 }
