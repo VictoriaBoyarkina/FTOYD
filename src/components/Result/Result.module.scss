@@ -1,0 +1,25 @@
+@import "@colors";
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 14px 24px;
+  border-radius: 4px;
+  color: $white02;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: $black02;
+
+  .block {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+    .title {
+      color: $white04;
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}
