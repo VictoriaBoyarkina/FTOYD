@@ -1,3 +1,5 @@
+@import "@colors";
+
 @mixin font-face($file-name, $weight) {
   @font-face {
     font-family: "Inter";
@@ -34,6 +36,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeSpeed;
+  background-color: $black01;
 }
 
 img,
