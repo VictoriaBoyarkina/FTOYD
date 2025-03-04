@@ -1,22 +1,23 @@
 import { FC } from "react";
 import styles from "./Status.module.scss";
 import clsx from "clsx";
+import { MatchStatus } from "../../types/match";
 
 interface StatusProps {
-  value: "live" | "finished" | "waiting";
+  value: MatchStatus;
 }
 
 const statusMap = {
-  live: {
-    className: styles.live,
+  [MatchStatus.ONGOING]: {
+    className: styles.ongoing,
     text: "Live",
   },
-  finished: {
+  [MatchStatus.FINISHED]: {
     className: styles.finished,
     text: "Finished",
   },
-  waiting: {
-    className: styles.waiting,
+  [MatchStatus.SCHEDULED]: {
+    className: styles.scheduled,
     text: "Match Preparing",
   },
 };

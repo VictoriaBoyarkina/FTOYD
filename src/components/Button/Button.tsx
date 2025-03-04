@@ -25,15 +25,20 @@ const Spinner: FC<React.SVGProps<SVGSVGElement>> = ({ className }) => {
   );
 };
 
-interface ButtonProps {
+type ButtonProps = {
   text?: string;
   loading?: boolean;
   disabled?: boolean;
-}
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: FC<ButtonProps> = ({ text = "Обновить", loading, disabled }) => {
+const Button: FC<ButtonProps> = ({
+  text = "Обновить",
+  loading,
+  disabled,
+  onClick,
+}) => {
   return (
-    <button className={styles.button} disabled={disabled}>
+    <button className={styles.button} disabled={disabled} onClick={onClick}>
       <div className={styles.buttonContent}>
         <span>{text}</span>
         <Spinner className={clsx({ [styles.loading]: loading })} />

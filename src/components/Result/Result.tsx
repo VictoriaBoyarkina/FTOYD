@@ -1,10 +1,11 @@
 import { FC } from "react";
 import styles from "./Result.module.scss";
+import { DEFAULT_SUBSTITUTE } from "../../utils/constants";
 
 interface ResultProps {
-  points: string;
-  position: number;
-  killings: number;
+  points: number | string;
+  position: number | string;
+  killings: number | string;
 }
 
 const Divider: FC = () => {
@@ -12,11 +13,13 @@ const Divider: FC = () => {
 };
 
 const Result: FC<ResultProps> = ({ points, position, killings }) => {
+  const pointsString = points === DEFAULT_SUBSTITUTE ? points : `+${points}`;
+
   return (
     <div className={styles.container}>
       <div className={styles.block}>
         <span className={styles.title}>Points:</span>
-        <span>{points}</span>
+        <span>{pointsString}</span>
       </div>
       <Divider />
       <div className={styles.block}>

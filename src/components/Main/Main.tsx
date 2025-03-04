@@ -4,15 +4,27 @@ import Header from "../Header";
 import LoaderGuard from "../LoaderGuard/LoaderGuard";
 import MatchInfo from "../MatchInfo";
 import List from "../List/List";
-
-const data = [1, 2, 3, 4];
+import useFetchMatches from "../../hooks/useFetchMatches";
+import { useDelayedValue } from "../../hooks/useDelayedValue";
 
 const Main: FC = () => {
+  const { data, isUninitialized, isError, isLoading, refresh } =
+    useFetchMatches();
+
+  const showLoader = useDelayedValue(isLoading || isUninitialized);
+
+  const showError = useDelayedValue(isError);
+
   return (
     <div className={styles.layout}>
-      <Header isError isLoading />
-      <LoaderGuard isLoading>
-        <List items={data} renderItem={(item) => <MatchInfo match={item} />} />
+      <Header isError={showError} isLoading={showLoader} onRefresh={refresh} />
+      <LoaderGuard isLoading={showLoader}>
+        {data && (
+          <List
+            items={data}
+            renderItem={(item, key) => <MatchInfo match={item} key={key} />}
+          />
+        )}
       </LoaderGuard>
     </div>
   );
