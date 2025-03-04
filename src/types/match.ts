@@ -1,14 +1,21 @@
-export type Player = {
+type Player = {
   kills: number | string;
   username: string;
 };
 
-export type Match = {
+enum MatchStatus {
+  SCHEDULED = "Scheduled",
+  ONGOING = "Ongoing",
+  FINISHED = "Finished",
+}
+
+type Match = {
   awayScore: number | string;
   awayTeam: {
     name: string;
     place: number | string;
     players: Player[] | null;
+    points: number | string;
     totalKills: number | string;
   };
   homeScore: number | string;
@@ -19,7 +26,10 @@ export type Match = {
     points: number | string;
     totalKills: number | string;
   };
-  status: string;
+  status: MatchStatus;
   time: string;
   title: string;
 };
+
+export type { Match };
+export { MatchStatus };

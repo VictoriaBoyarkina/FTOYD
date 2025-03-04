@@ -4,7 +4,7 @@ import styles from "./PlayerStatistic.module.scss";
 
 interface PlayerStatisticProps {
   userName: string;
-  result: number;
+  result: number | string;
 }
 
 const PlayerStatistic: FC<PlayerStatisticProps> = ({ userName, result }) => {

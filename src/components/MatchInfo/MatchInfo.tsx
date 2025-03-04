@@ -6,12 +6,13 @@ import ArrowIcon from "./ArrowIcon";
 import PlayerStatistic from "../PlayerStatistic";
 import Result from "../Result";
 import clsx from "clsx";
+import { Match } from "../../types/match";
 
 interface MatchInfoProps {
-  match: unknown;
+  match: Match;
 }
 
-const MatchInfo: FC<MatchInfoProps> = () => {
+const MatchInfo: FC<MatchInfoProps> = ({ match }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const handleCollapse = () => {
@@ -23,14 +24,17 @@ const MatchInfo: FC<MatchInfoProps> = () => {
       <div className={styles.match}>
         <div className={clsx(styles.team, styles.left)}>
           <CommandIcon />
-          <span>Command #1</span>
+          <span>{match.awayTeam.name}</span>
         </div>
         <div className={styles.score}>
-          <span>2 : 4</span>
-          <Status value="live" />
+          <span>
+            {match.homeScore} : {match.awayScore}
+          </span>
+          <Status value={match.status} />
         </div>
         <div className={clsx(styles.team, styles.right)}>
-          <span>Command #1</span>
+          <span>{match.homeTeam.name}</span>
+
           <CommandIcon />
           <div className={styles.arrow} onClick={handleCollapse}>
             <ArrowIcon type={isCollapsed ? "down" : "up"} />
@@ -41,19 +45,35 @@ const MatchInfo: FC<MatchInfoProps> = () => {
         <div className={styles.details}>
           <div className={styles.result}>
             <div className={styles.players}>
-              <PlayerStatistic userName="User1" result={4} />
-              <PlayerStatistic userName="User1" result={4} />
-              <PlayerStatistic userName="User1" result={4} />
+              {match.awayTeam.players?.map((player, index) => (
+                <PlayerStatistic
+                  key={index}
+                  userName={player?.username}
+                  result={player?.kills}
+                />
+              ))}
             </div>
-            <Result points="+50" killings={7} position={6} />
+            <Result
+              points={match.awayTeam.points}
+              killings={match.awayTeam.totalKills}
+              position={match.awayTeam.place}
+            />
           </div>
           <div className={styles.result}>
             <div className={styles.players}>
-              <PlayerStatistic userName="User1" result={4} />
-              <PlayerStatistic userName="User1" result={4} />
-              <PlayerStatistic userName="User1" result={4} />
+              {match.homeTeam.players?.map((player, index) => (
+                <PlayerStatistic
+                  key={index}
+                  userName={player?.username}
+                  result={player?.kills}
+                />
+              ))}
             </div>
-            <Result points="+50" killings={7} position={6} />
+            <Result
+              points={match.homeTeam.points}
+              killings={match.homeTeam.totalKills}
+              position={match.homeTeam.place}
+            />
           </div>
         </div>
       )}

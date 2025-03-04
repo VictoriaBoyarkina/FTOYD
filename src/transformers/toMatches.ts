@@ -1,8 +1,18 @@
-import { Match } from "../types/match";
+import { Match, MatchStatus } from "../types/match";
 import { DEFAULT_SUBSTITUTE } from "../utils/constants";
 import { createTranformer, isObject } from "../utils/helpers";
 
 const { toString, toNumber } = createTranformer(DEFAULT_SUBSTITUTE);
+
+const toMatchStatus = (value: unknown): MatchStatus => {
+  if (
+    typeof value === "string" &&
+    Object.values(MatchStatus).includes(value as MatchStatus)
+  ) {
+    return value as MatchStatus;
+  }
+  return MatchStatus.SCHEDULED;
+};
 
 const toMatches = (response: unknown): Match[] | null => {
   if (
@@ -25,8 +35,8 @@ const toMatches = (response: unknown): Match[] | null => {
               username: toString(player?.username),
             }))
           : null,
-        points: toNumber(match?.points),
-        totalKills: toNumber(match?.total_kills),
+        points: toNumber(match?.awayTeam?.points),
+        totalKills: toNumber(match?.awayTeam?.total_kills),
       },
       homeScore: toNumber(match?.homeScore),
       homeTeam: {
@@ -41,7 +51,7 @@ const toMatches = (response: unknown): Match[] | null => {
         points: toNumber(match?.homeTeam?.points),
         totalKills: toNumber(match?.homeTeam?.total_kills),
       },
-      status: toString(match?.status),
+      status: toMatchStatus(match?.status),
       time: toString(match?.time),
       title: toString(match?.title),
     };

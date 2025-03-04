@@ -12,8 +12,11 @@ const createTranformer = (fallback: any = "") => {
   };
 
   const toNumber = (data: unknown) => {
-    if (typeof Number(data) === "number") {
-      return data;
+    if (
+      typeof data === "number" ||
+      (typeof data === "string" && typeof Number(data) === "number")
+    ) {
+      return Number(data);
     }
 
     return fallback;
