@@ -3,7 +3,7 @@ import styles from "./List.module.scss";
 
 interface ListProps<T> {
   items: T[];
-  renderItem: (item: T) => ReactNode;
+  renderItem: (item: T, key: number) => ReactNode;
 }
 
 const List = <T,>({ items, renderItem }: ListProps<T>) => {

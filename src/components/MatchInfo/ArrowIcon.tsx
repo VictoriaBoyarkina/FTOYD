@@ -18,9 +18,9 @@ const ArrowIcon: FC<ArrowIconProps> = ({ type = "down" }) => {
       <path
         d="M1 8L8 1L15 8"
         stroke="#FAFAFA"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
